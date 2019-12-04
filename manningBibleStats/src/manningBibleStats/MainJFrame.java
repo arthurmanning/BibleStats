@@ -31,6 +31,7 @@ import javax.swing.JComboBox;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import javax.swing.ScrollPaneConstants;
+import java.awt.Font;
 
 /**
  * @author atmanning
@@ -84,84 +85,6 @@ public class MainJFrame extends JFrame {
 		tabbedPane.setBounds(24, 11, 584, 415);
 		contentPane.add(tabbedPane);
 		
-		JPanel panelStats = new JPanel();
-		tabbedPane.addTab("Stats", null, panelStats, null);
-		panelStats.setLayout(null);
-		
-		JLabel lblSecondPanel = new JLabel("stats panel");
-		lblSecondPanel.setBounds(26, 11, 112, 14);
-		panelStats.add(lblSecondPanel);
-		
-		JButton btnAlphabetical = new JButton("Alphabetical");
-		btnAlphabetical.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// gather stats for all the books
-				for( Book b : aBible ) {
-					b.wordStats(wStats);  // wStats available for stats display
-					b.wordStats(alWords, alWordCount);
-					b.wordStats(alWordStats);
-				}
-				
-				// now display them
-				// display first 100 words
-				int n=0;
-				
-				ArrayList<String> alWords = new ArrayList<>(wStats.keySet());
-				ArrayList<String> alWordsAndCount = new ArrayList<>();
-				for( WordStat ws : alWordStats )
-					alWordsAndCount.add(ws.toString());
-				Collections.sort(alWordsAndCount);
-				Collections.sort(alWords);
-				
-				while( n++ < 100 ) {
-					String key = alWords.get(n);
-					textAreaStats.append(key + ": " + wStats.get(key) 
-					+ " - \t" + alWordsAndCount.get(n) + " \n");
-				}
-			}
-		});
-		btnAlphabetical.setBounds(91, 7, 112, 23);
-		panelStats.add(btnAlphabetical);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(26, 45, 525, 314);
-		panelStats.add(scrollPane);
-		
-		textAreaStats = new JTextArea();
-		scrollPane.setViewportView(textAreaStats);
-		
-		JButton btnSortByNumber = new JButton("Sorted by #Occurrences");
-		btnSortByNumber.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnSortByNumber.setBounds(219, 11, 178, 19);
-		panelStats.add(btnSortByNumber);
-		
-		JPanel panelWordLookup = new JPanel();
-		tabbedPane.addTab("Word Locations", null, panelWordLookup, null);
-		panelWordLookup.setLayout(null);
-		
-		JLabel lblWordLocations = new JLabel("Word locations - Enter a word and I will show all it's locations");
-		lblWordLocations.setBounds(10, 11, 559, 14);
-		panelWordLookup.add(lblWordLocations);
-		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(20, 68, 531, 224);
-		panelWordLookup.add(scrollPane_1);
-		
-		JTextArea textArea_1 = new JTextArea();
-		scrollPane_1.setViewportView(textArea_1);
-		
-		textFieldWord = new JTextField();
-		textFieldWord.setBounds(20, 37, 127, 20);
-		panelWordLookup.add(textFieldWord);
-		textFieldWord.setColumns(10);
-		
-		JButton btnSearch = new JButton("Search!");
-		btnSearch.setBounds(157, 34, 89, 23);
-		panelWordLookup.add(btnSearch);
-		
 		JPanel panelVerse = new JPanel();
 		tabbedPane.addTab("Bible View", null, panelVerse, null);
 		panelVerse.setLayout(null);
@@ -182,10 +105,12 @@ public class MainJFrame extends JFrame {
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
 		scrollPane_2.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane_2.setBounds(45, 88, 450, 67);
+		scrollPane_2.setBounds(45, 88, 450, 163);
 		panelVerse.add(scrollPane_2);
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setFont(new Font("Arial", Font.PLAIN, 20));
+		textArea.setWrapStyleWord(true);
 		scrollPane_2.setViewportView(textArea);
 		textArea.setLineWrap(true);
 		
@@ -269,6 +194,84 @@ public class MainJFrame extends JFrame {
 		});
 		comboBoxVerse.setBounds(287, 57, 107, 24);
 		panelVerse.add(comboBoxVerse);
+		
+		JPanel panelStats = new JPanel();
+		tabbedPane.addTab("Stats", null, panelStats, null);
+		panelStats.setLayout(null);
+		
+		JLabel lblSecondPanel = new JLabel("stats panel");
+		lblSecondPanel.setBounds(26, 11, 112, 14);
+		panelStats.add(lblSecondPanel);
+		
+		JButton btnAlphabetical = new JButton("Alphabetical");
+		btnAlphabetical.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// gather stats for all the books
+				for( Book b : aBible ) {
+					b.wordStats(wStats);  // wStats available for stats display
+					b.wordStats(alWords, alWordCount);
+					b.wordStats(alWordStats);
+				}
+				
+				// now display them
+				// display first 100 words
+				int n=0;
+				
+				ArrayList<String> alWords = new ArrayList<>(wStats.keySet());
+				ArrayList<String> alWordsAndCount = new ArrayList<>();
+				for( WordStat ws : alWordStats )
+					alWordsAndCount.add(ws.toString());
+				Collections.sort(alWordsAndCount);
+				Collections.sort(alWords);
+				
+				while( n++ < 100 ) {
+					String key = alWords.get(n);
+					textAreaStats.append(key + ": " + wStats.get(key) 
+					+ " - \t" + alWordsAndCount.get(n) + " \n");
+				}
+			}
+		});
+		btnAlphabetical.setBounds(91, 7, 112, 23);
+		panelStats.add(btnAlphabetical);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(26, 45, 525, 314);
+		panelStats.add(scrollPane);
+		
+		textAreaStats = new JTextArea();
+		scrollPane.setViewportView(textAreaStats);
+		
+		JButton btnSortByNumber = new JButton("Sorted by #Occurrences");
+		btnSortByNumber.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnSortByNumber.setBounds(219, 11, 178, 19);
+		panelStats.add(btnSortByNumber);
+		
+		JPanel panelWordLookup = new JPanel();
+		tabbedPane.addTab("Word Locations", null, panelWordLookup, null);
+		panelWordLookup.setLayout(null);
+		
+		JLabel lblWordLocations = new JLabel("Word locations - Enter a word and I will show all it's locations");
+		lblWordLocations.setBounds(10, 11, 559, 14);
+		panelWordLookup.add(lblWordLocations);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(20, 68, 531, 224);
+		panelWordLookup.add(scrollPane_1);
+		
+		JTextArea textArea_1 = new JTextArea();
+		scrollPane_1.setViewportView(textArea_1);
+		
+		textFieldWord = new JTextField();
+		textFieldWord.setBounds(20, 37, 127, 20);
+		panelWordLookup.add(textFieldWord);
+		textFieldWord.setColumns(10);
+		
+		JButton btnSearch = new JButton("Search!");
+		btnSearch.setBounds(157, 34, 89, 23);
+		panelWordLookup.add(btnSearch);
 	}
 	
 	void loadBible() {
