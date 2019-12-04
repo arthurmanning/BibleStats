@@ -21,10 +21,12 @@ public class Verse {
 	
 	public Verse (String s) {  // Verse constructor
 		this.s = s;  		   // store the string
-		sTemp = s.split("([()|.,!?:;'\\\"-]|\\s)+");  // split the words into array elements
-		aWords = new String[sTemp.length-1];
-		for( int i=0; i<sTemp.length-1; i++ )  // skip the last ~
-			aWords[i]=sTemp[i];
+		aWords = s.split("([()|.,!?:;'\\\"-]|\\s)+");  // split the words into array elements
+		//aWords = new String[sTemp.length-1];
+		
+		// clone sTemp into aWords skipping last word.
+		//for( int i=0; i<sTemp.length-1; i++ )  // skip the last ~
+		//	aWords[i]=sTemp[i];
 	}
 	
 	public String getText() {
