@@ -100,7 +100,7 @@ public class MainJFrame extends JFrame {
 				comboBoxPopulate(comboBoxBook, aBible);
 			}
 		});
-		btnLoadBible.setBounds(33, 285, 254, 23);
+		btnLoadBible.setBounds(45, 290, 450, 23);
 		panelVerse.add(btnLoadBible);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
