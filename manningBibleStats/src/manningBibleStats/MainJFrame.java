@@ -195,6 +195,30 @@ public class MainJFrame extends JFrame {
 		comboBoxVerse.setBounds(287, 57, 107, 24);
 		panelVerse.add(comboBoxVerse);
 		
+		JPanel panelWordLookup = new JPanel();
+		tabbedPane.addTab("Word Locations", null, panelWordLookup, null);
+		panelWordLookup.setLayout(null);
+		
+		JLabel lblWordLocations = new JLabel("Word locations - Enter a word and I will show all it's locations");
+		lblWordLocations.setBounds(10, 11, 559, 14);
+		panelWordLookup.add(lblWordLocations);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(20, 68, 531, 224);
+		panelWordLookup.add(scrollPane_1);
+		
+		JTextArea textArea_1 = new JTextArea();
+		scrollPane_1.setViewportView(textArea_1);
+		
+		textFieldWord = new JTextField();
+		textFieldWord.setBounds(20, 37, 127, 20);
+		panelWordLookup.add(textFieldWord);
+		textFieldWord.setColumns(10);
+		
+		JButton btnSearch = new JButton("Search!");
+		btnSearch.setBounds(157, 34, 89, 23);
+		panelWordLookup.add(btnSearch);
+		
 		JPanel panelStats = new JPanel();
 		tabbedPane.addTab("Stats", null, panelStats, null);
 		panelStats.setLayout(null);
@@ -231,7 +255,7 @@ public class MainJFrame extends JFrame {
 				}
 			}
 		});
-		btnAlphabetical.setBounds(91, 7, 112, 23);
+		btnAlphabetical.setBounds(130, 7, 178, 26);
 		panelStats.add(btnAlphabetical);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -246,32 +270,8 @@ public class MainJFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnSortByNumber.setBounds(219, 11, 178, 19);
+		btnSortByNumber.setBounds(320, 7, 231, 26);
 		panelStats.add(btnSortByNumber);
-		
-		JPanel panelWordLookup = new JPanel();
-		tabbedPane.addTab("Word Locations", null, panelWordLookup, null);
-		panelWordLookup.setLayout(null);
-		
-		JLabel lblWordLocations = new JLabel("Word locations - Enter a word and I will show all it's locations");
-		lblWordLocations.setBounds(10, 11, 559, 14);
-		panelWordLookup.add(lblWordLocations);
-		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(20, 68, 531, 224);
-		panelWordLookup.add(scrollPane_1);
-		
-		JTextArea textArea_1 = new JTextArea();
-		scrollPane_1.setViewportView(textArea_1);
-		
-		textFieldWord = new JTextField();
-		textFieldWord.setBounds(20, 37, 127, 20);
-		panelWordLookup.add(textFieldWord);
-		textFieldWord.setColumns(10);
-		
-		JButton btnSearch = new JButton("Search!");
-		btnSearch.setBounds(157, 34, 89, 23);
-		panelWordLookup.add(btnSearch);
 	}
 	
 	void loadBible() {
