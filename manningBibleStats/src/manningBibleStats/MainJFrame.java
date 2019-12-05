@@ -268,6 +268,22 @@ public class MainJFrame extends JFrame {
 		JButton btnSortByNumber = new JButton("Sorted by #Occurrences");
 		btnSortByNumber.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				if ( 0 == alWordStats.size())
+					for (Book b : aBible )
+						b.wordStats(alWordStats);
+				
+				WordStat wStat = new WordStat("a",1);
+				Collections.sort(alWordStats, wStat.new SortByCount());
+				
+				ArrayList<String> alCountAndWords = new ArrayList<>();
+				for( WordStat ws : alWordStats ) 
+					alCountAndWords.add(ws.toString2());
+				
+				//Collections.sort(alCountAndWords, Collections.reverseOrder());
+				textAreaStats.setText("");
+				for( int n=0; n<500; n++) 
+					textAreaStats.append(alCountAndWords.get(n) + "\n");
 			}
 		});
 		btnSortByNumber.setBounds(320, 7, 231, 26);

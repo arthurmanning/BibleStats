@@ -21,7 +21,7 @@ public class Verse {
 	
 	public Verse (String s) {  // Verse constructor
 		this.s = s;  		   // store the string
-		aWords = s.split("([()|.,!?:;'\\\"-]|\\s)+");  // split the words into array elements
+		aWords = s.split("([()|.,!?:;\\\"-]|\\s)+");  // split the words into array elements
 		//aWords = new String[sTemp.length-1];
 		
 		// clone sTemp into aWords skipping last word.
