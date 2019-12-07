@@ -207,8 +207,10 @@ public class MainJFrame extends JFrame {
 		scrollPane_1.setBounds(20, 68, 531, 224);
 		panelWordLookup.add(scrollPane_1);
 		
-		JTextArea textArea_1 = new JTextArea();
-		scrollPane_1.setViewportView(textArea_1);
+		JTextArea textAreaResults = new JTextArea();
+		textAreaResults.setLineWrap(true);
+		textAreaResults.setWrapStyleWord(true);
+		scrollPane_1.setViewportView(textAreaResults);
 		
 		textFieldWord = new JTextField();
 		textFieldWord.setBounds(20, 37, 127, 20);
@@ -216,6 +218,11 @@ public class MainJFrame extends JFrame {
 		textFieldWord.setColumns(10);
 		
 		JButton btnSearch = new JButton("Search!");
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textAreaResults.setText(wordSearch(textFieldWord.getText(),aBible));
+			}
+		});
 		btnSearch.setBounds(157, 34, 89, 23);
 		panelWordLookup.add(btnSearch);
 		
@@ -348,5 +355,13 @@ public class MainJFrame extends JFrame {
 			if ( s.contentEquals(aBooks.get(i).getName()) )
 				return aBooks.get(i);
 		return null;  // return null if book named s not found
+	}
+	
+	
+	String wordSearch(String sWord, ArrayList<Book> aBooks ) {
+		String sResult = "";
+		for( int i=0; i<aBooks.size(); i++ )
+			sResult += aBooks.get(i).wordSearch(sWord);
+		return sResult;
 	}
 }

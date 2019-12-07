@@ -8,6 +8,7 @@ package manningBibleStats;
 import java.util.ArrayList;
 import java.util.Map;
 
+
 /**
  * @author atmanning
  *
@@ -26,6 +27,14 @@ public class Verse {
 	
 	public String getText() {
 		return s;
+	}
+	
+	public String wordSearch( String sWord ) {
+		String sResult = "";
+		if( s.contains(sWord) ) {
+			sResult = s.replaceAll(sWord, "[" + sWord + "]");
+		}
+		return sResult;
 	}
 	
 	void wordStats( Map<String,Integer> wStats ) {

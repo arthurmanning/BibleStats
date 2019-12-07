@@ -32,6 +32,19 @@ public class Chapter {
 		aVerses.add(new Verse(s));  // verse num follows index in aVerses+1
 	}
 	
+	public String wordSearch( String sWord ) {
+		String sResult = "";
+		String s;
+		int vNum = 1;
+		for( Verse v : aVerses ) {
+			s = v.wordSearch( sWord );
+			if( 0 < s.length())
+				sResult += this.iChapter + ":" + vNum + " " + s + "\n";
+			vNum++;
+		}
+		return sResult;
+	}
+	
 	void wordStats( ArrayList<WordStat> alWStats ) {
 		for( Verse v : aVerses )
 			v.wordStats(alWStats);

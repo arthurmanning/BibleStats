@@ -45,6 +45,17 @@ public class Book {
 		
 	}
 	
+	public String wordSearch(String sWord) {
+		String sResult = "";
+		String s = "";
+		for( Chapter ch : aChapters ) {
+			s = ch.wordSearch(sWord);
+			if ( 0 < s.length() )
+				sResult += this.sName + " " + s + "\n";
+		}
+		return sResult;
+	}
+	
 	public void wordStats(ArrayList<String> alWords, ArrayList<Integer> alCount ) {
 		for( Chapter ch : aChapters )
 			ch.wordStats( alWords, alCount );
