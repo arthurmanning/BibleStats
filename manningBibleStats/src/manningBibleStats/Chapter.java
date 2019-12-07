@@ -33,7 +33,7 @@ public class Chapter {
 	}
 	
 	public String wordSearch( String sWord ) {
-		String sResult = "";
+		String sResult = ""; 
 		String s;
 		int vNum = 1;
 		for( Verse v : aVerses ) {

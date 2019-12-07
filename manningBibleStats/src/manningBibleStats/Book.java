@@ -47,7 +47,7 @@ public class Book {
 	
 	public String wordSearch(String sWord) {
 		String sResult = "";
-		String s = "";
+		String s = ""; 
 		for( Chapter ch : aChapters ) {
 			s = ch.wordSearch(sWord);
 			if ( 0 < s.length() )

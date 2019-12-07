@@ -30,7 +30,7 @@ public class Verse {
 	}
 	
 	public String wordSearch( String sWord ) {
-		String sResult = "";
+		String sResult = ""; 
 		if( s.contains(sWord) ) {
 			sResult = s.replaceAll(sWord, "[" + sWord + "]");
 		}
